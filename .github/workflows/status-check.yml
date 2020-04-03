@@ -1,4 +1,4 @@
-name: Go
+name: status-check
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build
+    name: status-check
     runs-on: ubuntu-latest
     steps:
       - name: Set up Go 1.13
@@ -20,12 +20,11 @@ jobs:
       - name: Check out code into the Go module directory
         uses: actions/checkout@v2
 
-      - name: Build
-        run: go build -v .
-
-      - name: Test
+      - name: run test
         run: |
           go install golang.org/x/lint/golint
           golint ./...
-          go clean -testcache
           go test ./...
+
+      - name: run build
+        run: go build -v .
