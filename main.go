@@ -133,6 +133,9 @@ var rng = rand.New(&lockedSource{
 })
 
 func randString(n int) string {
+	if n < 0 {
+		return ""
+	}
 	b := make([]byte, n)
 	cache, remain := rng.Int63(), rs6LetterIdxMax
 	for i := n - 1; i >= 0; {
