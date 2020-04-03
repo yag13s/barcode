@@ -25,5 +25,6 @@ jobs:
 
       - name: Test
         run: |
+          golint ./...
           go clean -testcache
           go test ./...
