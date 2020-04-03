@@ -48,6 +48,11 @@ func Test_randString(t *testing.T) {
 			args{0},
 			0,
 		},
+		{
+			"[success] :)",
+			args{3},
+			0,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
